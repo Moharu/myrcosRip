@@ -93,9 +93,11 @@ const newDeath = (death) => {
 
 app.get('/', (req, res) => {
     admin.messaging().subscribeToTopic([req.query.token], 'quero_ver_o_marcos_se_fuder')
+    const myrcosDeathsReversed = _.clone(myrcosDeaths)
+    myrcosDeathsReversed.reverse()
     res.json({
         count: myrcosDeaths.length,
-        deaths: myrcosDeaths
+        deaths: myrcosDeathsReversed
     })
 })
 
